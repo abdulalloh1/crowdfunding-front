@@ -1,0 +1,30 @@
+.toggler-btn {
+  width: 200px;
+  height: 40px;
+  margin-left: auto;
+  padding-right: 35px;
+
+  &--active {
+    .toggler-btn__icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 18px;
+    top: 16px;
+    transition: transform .3s;
+  }
+}
+
+@include max-xs {
+  .toggler-btn {
+    height: 28px;
+    min-height: unset;
+
+    &__icon {
+      top: 10px;
+    }
+  }
+}

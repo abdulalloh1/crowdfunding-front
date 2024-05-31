@@ -1,0 +1,3 @@
+export const USER_ON_MODERATION = "ON_MODERATION"
+export const USER_MODERATED = "MODERATED"
+export const USER_REJECTED = "REJECTED"

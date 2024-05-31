@@ -1,0 +1,176 @@
+.file-input {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+
+  &__input {
+    width: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    z-index: -1;
+
+    &:focus + .file-input__desc label.file-input__btn {
+      background: #e5e5e5;
+    }
+  }
+
+  label.file-input__btn {
+    transition: .3s background-color, .3s color;
+  }
+
+  &__btn {
+    padding: 8px 12px;
+    background: #F4F4F4;
+    border-radius: 8px;
+    font-size: 12px;
+    color: $black;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px;
+
+    &:hover {
+      background: #e5e5e5;
+    }
+
+    &:active {
+      background: #797979;
+      color: #fff;
+
+      svg:not(.svg__path--red) {
+        path {
+          stroke: #fff
+        }
+      }
+
+      .svg__path--red {
+        path {
+          fill: #fff;
+        }
+      }
+    }
+    svg{
+      path{
+        transition: all .3s ease;
+      }
+    }
+  }
+
+  &__icon {
+    @include flexCenter;
+    background: #F4FBFB;
+    border-radius: 12px;
+    margin-right: 15px;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__desc {
+    width: calc(100% - 80px - 15px);
+  }
+
+  &__title {
+    @include text-small;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 9px;
+  }
+
+  &__docs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  &__error {
+    padding: 2px 8px;
+    background-color: $red;
+    border-radius: 16px;
+    color: #fff;
+    margin-right: 8px;
+    font-size: 12px;
+  }
+
+  &__doc {
+    position: relative;
+    border: 1px solid #ccc;
+    width: 100%;
+    flex-wrap: unset;
+
+    .doc {
+      &__icon {
+        min-width: 60px;
+        max-width: 60px;
+        order: unset;
+        margin-right: 15px;
+      }
+
+      &__desc {
+        margin: 0;
+        padding-right: 15px;
+        order: unset;
+      }
+    }
+
+    &:hover {
+      .doc__name {
+        color: $black;
+      }
+    }
+  }
+
+  &__progress-circular {
+    margin-right: 15px;
+  }
+
+  &--large {
+    .file-input__icon {
+      width: 120px;
+      height: 120px;
+    }
+
+    .file-input__desc {
+      width: calc(100% - 120px - 15px);
+    }
+  }
+}
+
+@include max-xs {
+  .file-input {
+    &__doc {
+      flex-wrap: wrap;
+
+      .doc {
+        &__icon {
+          order: 1;
+          min-width: 50px;
+          max-width: 50px;
+          margin-right: auto;
+        }
+
+        &__delete {
+          order: 2;
+        }
+
+        &__desc {
+          width: 100%;
+          order: 3;
+          padding: 0;
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}

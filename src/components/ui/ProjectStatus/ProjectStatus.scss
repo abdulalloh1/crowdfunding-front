@@ -1,0 +1,14 @@
+.c {
+  &-project-status {
+    display: flex;
+    align-items: center;
+
+    &__color {
+      margin-right: 6px;
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+    }
+  }
+
+}

@@ -1,0 +1,225 @@
+.btn {
+  position: relative;
+  width: fit-content;
+  min-height: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s;
+
+  &__loading-animation {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__icon {
+    display: flex;
+    margin-right: 5px;
+  }
+
+  &__text {
+    display: flex;
+    text-align: center;
+    transition: all .3s;
+  }
+
+  &--bg {
+
+    &.btn--green {
+      color: #fff;
+      background-color: $green;
+
+      &:not(:disabled):hover {
+        background-color: $green--hover;
+      }
+
+      &:not(:disabled):active {
+        background-color: $green--active;
+      }
+
+
+    }
+
+    &.btn--grey {
+      background: #F4F4F4;
+      color: #000000;
+
+      &:hover {
+        background: #e5e5e5;
+      }
+
+      &:active {
+        background: #797979;
+        color: #fff;
+
+        svg {
+          path {
+            stroke: #fff
+          }
+        }
+      }
+    }
+
+    &.btn--black {
+      background: $black;
+      color: #fff;
+
+      &:not(:disabled):hover {
+        background-color: #62696B;
+      }
+
+      &:not(:disabled):active {
+        background-color: #A5A9AB;
+      }
+    }
+
+    &.btn--white {
+      background: #FFFFFF;
+
+      &:not(:disabled):hover {
+        background-color: #e8e8e8;
+      }
+
+      &:not(:disabled):active {
+        background-color: #ccc;
+      }
+    }
+
+    &.btn--red {
+      background: $red--light;
+      color: $red;
+
+      &:hover {
+        background: $red--normal;
+      }
+
+      &:active {
+        background: $red--active;
+      }
+    }
+
+    &[disabled] {
+      background-color: #eee;
+      color: $black_passive;
+    }
+  }
+
+  &--outlined {
+    border: 1px solid #BBBFBF;
+    color: $black;
+
+    &.btn--black {
+      &:not(:disabled):hover {
+        background-color: #eee;
+      }
+
+      &:not(:disabled):active {
+        background-color: #ccc;
+      }
+    }
+
+    &.btn--grey {
+      border: 1px solid #DDDFDF;
+
+      &:not(:disabled):hover {
+        background-color: #eee;
+      }
+
+      &:not(:disabled):active {
+        background-color: #ccc;
+      }
+    }
+
+    &--dark-grey {
+      border: 1px solid #eee;
+      color: white;
+
+      &:hover {
+        background-color: #3f3f3f;
+      }
+
+      &:active {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+  }
+
+  &--loading {
+    .btn__text, .btn__icon {
+      opacity: 0;
+    }
+  }
+
+  &-back {
+    display: flex;
+    align-items: center;
+    transition: color .3s;
+    margin-bottom: 15px;
+
+    svg {
+      path {
+        transition: stroke .3s;
+      }
+    }
+
+    &:hover {
+      color: $green;
+
+      svg {
+        path {
+          stroke: $green;
+        }
+      }
+    }
+  }
+
+  &-basket {
+    path {
+      transition: all .3s;
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: $red;
+        }
+      }
+    }
+  }
+
+  &-pen {
+    svg, path {
+      --current-color: #BBBFBF;
+      transition: all .3s;
+    }
+
+    &:hover {
+      path {
+        fill: $green;
+      }
+      --current-color: $green;
+
+    }
+  }
+
+  &-show {
+    cursor: pointer;
+    --currentColor: #bbbfbf;
+
+    path {
+      transition: all .3s;
+    }
+
+    &:hover {
+      path {
+        --currentColor: #000;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.c {
+  &-alert {
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+
+    &__icon {
+      min-width: 40px;
+      max-width: 40px;
+      height: 40px;
+      @include flexCenter;
+      font-size: 24px;
+      margin-right: 16px;
+      border-radius: 50%;
+    }
+
+    &--error {
+      background-color: $red--light;
+      color: $red;
+
+      .c-alert__icon {
+        background-color: $red--normal;
+      }
+    }
+
+    &--warning {
+      color: $orange;
+      background-color: $orange--light;
+
+      .c-alert__icon {
+        background-color: $orange--normal;
+      }
+    }
+
+    &--info {
+      background-color: $green--light;
+      color: $green;
+
+      .c-alert__icon {
+        background-color: #8cfff7;
+      }
+    }
+
+    &--internet-error {
+      position: fixed;
+      left: 50%;
+      bottom: 50px;
+      transform: translateX(-50%);
+      width: fit-content;
+      z-index: 9;
+      font-size: 18px;
+
+      .c-alert__icon {
+        min-width: 60px;
+        max-width: 60px;
+        height: 60px;
+        font-size: 30px;
+      }
+    }
+  }
+}

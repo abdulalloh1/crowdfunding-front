@@ -1,0 +1,219 @@
+.editor {
+  width: 100%;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+
+  .toolbar {
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #e2e2e2;
+
+    .line {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #e2e2e2;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .box {
+        display: flex;
+        border-right: 1px solid #e2e2e2;
+
+        .editor-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          width: 30px;
+          height: 30px;
+          user-select: none;
+          transition: all .3s;
+
+          &:hover, &--active {
+            background-color: #e1e1e1;
+            cursor: pointer;
+
+            > svg {
+              fill: $green;
+            }
+          }
+
+          svg, img {
+            max-width: 15px;
+            height: 15px;
+            pointer-events: none;
+          }
+
+          &.has-submenu {
+            width: 40px;
+
+            > svg {
+              margin-left: -11px;
+            }
+
+            &::after {
+              content: '';
+              width: 6px;
+              height: 6px;
+              position: absolute;
+              background-image: url('/img/icons/arrow-down.svg');
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+              right: 6px;
+            }
+
+            .submenu {
+              display: none;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              right: 0;
+              z-index: 3;
+              background-color: #FFF;
+              border: 1px solid #eee;
+              border-top: none;
+
+              .editor-btn {
+                width: 100%;
+              }
+
+              .btn {
+                width: 39px;
+              }
+
+              &:hover {
+                display: block;
+              }
+            }
+
+            &:hover .submenu {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .content-area {
+    padding: 15px 12px;
+    line-height: 1.5;
+    border-radius: 0 0 8px 8px;
+
+    .visual-view {
+      outline: none;
+      min-height: 300px;
+      font-size: 14px;
+
+      ul, ol {
+        padding-left: 20px;
+      }
+
+      p {
+        margin: 12px 0;
+      }
+    }
+
+    .html-view {
+      outline: none;
+      display: none;
+      width: 100%;
+      height: 200px;
+      border: none;
+      resize: none;
+    }
+  }
+}
+
+/* pop-up */
+
+.pop-up {
+  max-width: 100%;
+  width: 300px;
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: unset;
+  box-shadow: 0 0 7px rgba(0, 0, 0, .1);
+  position: absolute;
+  background-color: #fff;
+  top: 55px;
+  left: 50%;
+  transform: translate(-50%, -30px);
+  padding: 20px 15px;
+  border-radius: 12px;
+  transition: transform .3s, opacity .3s;
+
+  &--show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      transition: transform .3s;
+    }
+
+    &:hover {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .pop-up-content {
+    flex-direction: column;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    input {
+      margin: 1rem 0;
+      padding: 0.5rem;
+
+      &[type="text"] {
+        width: 100%;
+      }
+    }
+
+    .row label {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .pop-up-bg {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+}
+
+@include max-xs {
+  .editor {
+    .content-area {
+      .visual-view {
+        min-height: 200px;
+      }
+    }
+  }
+  .box {
+    .tooltip__body {
+      background-color: red;
+      display: none;
+    }
+  }
+}

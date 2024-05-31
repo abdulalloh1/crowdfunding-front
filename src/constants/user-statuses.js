@@ -1,0 +1,2 @@
+export const USER_SIMPLE_STATUS = "SIMPLE";
+export const USER_APPROVED_STATUS = "APPROVED";

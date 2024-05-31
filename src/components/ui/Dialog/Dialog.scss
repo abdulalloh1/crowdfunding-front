@@ -1,0 +1,262 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  transition: .3s opacity, .3s transform;
+
+  &--size {
+    &-large {
+      .modal__window {
+        width: 900px;
+      }
+    }
+
+    &-medium {
+      .modal__window {
+        width: 600px;
+      }
+    }
+
+    &-small {
+      .modal__window {
+        width: 375px;
+      }
+    }
+
+    &-auto {
+      .modal__window {
+        width: auto;
+      }
+    }
+  }
+
+  &-enter-from, &-leave-to {
+    opacity: 0;
+
+    .modal__window {
+      transform: scale(.8);
+    }
+  }
+
+  &-enter-to {
+    opacity: 1;
+
+    .modal__window {
+      transform: scale(1);
+    }
+  }
+
+  &-enter-active, &-leave-active {
+    transition: opacity .3s ease;
+  }
+
+  &__overlay {
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    @include leftRightTopBottom;
+  }
+
+  &__wrapper {
+    @include flexCenter;
+    height: 100%;
+  }
+
+  &__window {
+    max-width: calc(100% - 30px);
+    max-height: calc(100% - 30px);
+    overflow-y: auto;
+    width: 375px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 12px;
+    transition: transform .3s;
+    padding-bottom: 30px;
+
+    @include scrollbar;
+  }
+
+  &__header {
+    padding: 18px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__body {
+    padding: 30px;
+  }
+
+  &__buttons {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__close {
+    margin-left: auto;
+    margin-bottom: 15px;
+
+    svg {
+      transition: transform .3s;
+    }
+
+    &:hover {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: bold;
+    text-align: center;
+    @include flexCenter;
+    color: $black;
+  }
+
+  &__subtitle {
+    @include text-small;
+    text-align: center;
+    color: $black;
+    margin-top: 15px;
+  }
+
+  &__btn {
+    width: 100%;
+    border-radius: 4px;
+    padding: 13px 15px;
+    justify-content: center;
+    text-align: center;
+    @include text-small;
+    font-weight: bold;
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .form {
+    &-label {
+      font-weight: 500;
+      @include text-small;
+      color: #565E5E;
+      margin-bottom: 4px;
+      display: flex;
+    }
+
+    &-forgot-password {
+      color: $black_passive;
+      margin-bottom: 15px;
+      cursor: pointer;
+
+      &:hover {
+        color: $green;
+      }
+    }
+
+    &__back-to-main {
+      margin-top: 15px;
+    }
+  }
+
+  &--add-bank-card {
+    .modal__window {
+      width: 420px;
+    }
+
+    &__info {
+      margin-left: 10px;
+
+      &__icon {
+        display: flex;
+        width: 14px;
+        height: 14px;
+        margin-top: -4px;
+
+        path {
+          --currentColor: #151717;
+          transition: fill .3s;
+        }
+
+        &:hover {
+          path {
+            --currentColor: #28B2AB;
+          }
+        }
+      }
+
+      .tooltip__body {
+        width: 250px;
+        max-width: 90vw;
+        left: unset;
+        right: -10px;
+        transform: unset;
+
+        &:before {
+          left: unset;
+          transform: unset;
+          right: 11px;
+        }
+      }
+    }
+
+    &__name {
+      display: flex;
+      flex-wrap: wrap;
+
+      .form {
+        &-input {
+          width: calc(70% - 9px);
+        }
+
+        &-icon {
+          display: flex;
+          width: calc(30% - 9px);
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
+
+@include max-xs {
+  .modal {
+    &__window {
+      padding: 0 0 30px;
+    }
+
+    &__header {
+      padding: 18px 20px;
+    }
+
+    &__body {
+      padding: 0 20px 20px;
+    }
+
+    &__buttons {
+      padding: 0 20px;
+    }
+
+    &--add-bank-card {
+      &__info{
+        .tooltip__body{
+          left: unset;
+          right: -36px;
+          transform: unset;
+
+          &:before{
+            right: 37px;
+          }
+        }
+      }
+    }
+  }
+}
